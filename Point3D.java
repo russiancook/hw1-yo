@@ -55,19 +55,24 @@ public class Point3D
         return _x;
     }
     
-    public void setX(double x) 
+    public void setX(double num) 
     {
-        _x = x;
+        _x = num;
     }
     
-    public void setY(double y) 
+    public void setY(double num) 
     {
-        _y = y;
+        _y = num;
     }
     
-    public void setZ(double z) 
+    public void setZ(double num) 
     {
-        _z = z;
+        _z = num;
+    }
+    
+    public String toString()
+    {
+        return "("+ _x + ","+ _y + "," + _z + ")";
     }
 
     /**
@@ -82,3 +87,4 @@ public class Point3D
         return _x + _y;
     }
 }
+
