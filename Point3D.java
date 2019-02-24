@@ -74,6 +74,30 @@ public class Point3D
     {
         return "("+ _x + ","+ _y + "," + _z + ")";
     }
+    
+    public boolean equals(Point3D point)
+    {
+        if ( _x == point._x && _y == point._y && _z == point._z)
+        {
+            return true;
+        }
+        return false;
+           
+    }
+    
+    public boolean isAbove(Point3D point)
+    {
+        if (_z > point._z)
+            return true;
+        return false;
+    }
+    
+    public boolean isUnder(Point3D point)
+    {
+        if (isAbove(point) == true)
+            return false;
+        return true;
+    }
 
     /**
      * An example of a method - replace this comment with your own
