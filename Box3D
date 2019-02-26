@@ -1,0 +1,47 @@
+
+/**
+ * Write a description of class Box3D here.
+ *
+ * @author (your name)
+ * @version (a version number or a date)
+ */
+public class Box3D 
+{
+    // instance variables - replace the example below with your own
+    private int _legnth;
+    private int _width;
+    private int _height;
+    private Point3D _base;
+    private final int DEFAULT_VALUE = 0;
+    
+    public Box3D()
+    {
+        _base = new Point3D();
+        _legnth = DEFAULT_VALUE ;
+        _width = DEFAULT_VALUE ;
+        _height = DEFAULT_VALUE ;
+    }
+    
+    public Box3D(Point3D basePoint, int legnth, int width, int height )
+    {
+        _base = new Point3D(basePoint);
+        _legnth = legnth;
+        _width =  width;
+        _height = height;
+    }
+    
+    public Box3D(Box3D otherBox)
+    {
+        // initialise instance variables
+        if (otherBox != null)
+        {
+            _base = new Point3D(otherBox._base);
+            _legnth = otherBox._legnth;
+            _width =  otherBox._width;
+            _height = otherBox._height;
+        }
+    }
+    
+
+    
+}
