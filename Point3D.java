@@ -9,8 +9,9 @@ import java.lang.Math;
 
 public class Point3D
 {
-    // instance variables - replace the example below with your own
+    // instance variables 
     private double _x, _y, _z;
+    private final double DEFAULT_VALUE = 0.0;
 
     /**
      * Constructor and initializer for a point at
@@ -19,9 +20,9 @@ public class Point3D
     public Point3D()
     {
         // initialise instance variables
-        _x = 0.0;
-        _y = 0.0;
-        _z = 0.0;
+        _x = DEFAULT_VALUE;
+        _y = DEFAULT_VALUE;
+        _z = DEFAULT_VALUE;
     }
     
     /**
