@@ -1,14 +1,13 @@
 
-
 /**
- * Write a description of class Box3D here.
- *
- * @author (your name)
- * @version (a version number or a date)
- */
+* Write a description of class Box3D here.
+*
+* @author (your name)
+* @version (a version number or a date)
+*/
 public class Box3D 
 {
-    // instance variables - replace the example below with your own
+    // instance variables 
     private int _legnth;
     private int _width;
     private int _height;
@@ -76,13 +75,13 @@ public class Box3D
         if (num > 0)
             _legnth = num;
     }
-
+    
     public void setWidth(int num)
     {
         if (num > 0)
             _width = num;
     }
-
+    
     public void setHeight(int num)
     {
         if (num > 0)
@@ -99,7 +98,7 @@ public class Box3D
         return "The base point is ("+ _base + "),length=" + _legnth +",width=" + _width +
         ",height=" + _height;
     }
-    
+
     public boolean equals(Box3D other)
     {
         if (_base.equals(other._base)  && other._height == _height && other._legnth == _legnth && 
@@ -109,5 +108,79 @@ public class Box3D
         }
         return false;
     }   
+    
+    public Box3D move(double dx, double dy, double dz)
+    {
+        Point3D newPoint = new Point3D(dx,dy,dz);
+        Box3D newBox = new Box3D(newPoint, _legnth, _width, _height);
+        return newBox;
+    }
+    
+    public Point3D getUpRightBackPoint()
+    {
+        Point3D newPoint = new Point3D(_base);
+        newPoint.move((double)_legnth, (double)_width, (double)_height);
+        return newPoint;
+    }
+    
+    private double getMiddle(double x1, double x2)
+    {
+        return (x1 + x2) / 2;
+    }
+    
+    public Point3D getCenter()
+    {
+        double middleX, middleY, middleZ;
+        Point3D farPoint = new Point3D (getUpRightBackPoint());
+        middleX = getMiddle(_base.getX() ,farPoint.getX());
+        middleY = getMiddle(_base.getY() ,farPoint.getY());
+        middleZ = getMiddle(_base.getZ() ,farPoint.getZ());
+        Point3D middlePoint = new Point3D (middleX, middleY, middleZ);
+        return middlePoint;
+    }
+    
+    public double distance(Box3D other)
+    {
+        Point3D currentCenter = new Point3D (getCenter());
+        Point3D otherCenter = new Point3D (other.getCenter());
+        return currentCenter.distance(otherCenter);
+    }
+    
+    public int getVolume()
+    {
+        return _legnth * _width * _height;
+    }   
+    
+    public int getSurface()
+    {
+        int surface;
+        surface = _legnth * _width * 2 + _legnth * _height * 2 + _height * _width * 2;
+        return surface;
+    }
+    
+    public boolean isLargerCapacity(Box3D other)
+    {
+        if (getVolume() > other.getVolume())
+            return true;
+        return false;
+    }
+    
+    public boolean contains(Box3D other)
+    {
+        if (isLargerCapacity(other) && _legnth > other._legnth && 
+        _width > other._width && _height > other._height)
+            return true;
+        return false;
+    }
+    
+    public boolean isAbove(Box3D other)
+    {
+        Point3D newPoint = new Point3D(other.getUpRightBackPoint());
+        if (_base.isAbove(newPoint))
+            return true;
+        return false;
+    }
+    
 
 }
+
