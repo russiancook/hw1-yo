@@ -60,7 +60,7 @@ public class Point3D
      * Returns the X coordinate of the point
      * @return _x the x coordinate
      */
-    public double getX(Point3D point)
+    public double getX()
     {
         return _x;
     }
