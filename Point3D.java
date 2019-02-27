@@ -69,7 +69,7 @@ public class Point3D
      * Returns the Y coordinate of the point
      * @return _y the y coordinate
      */
-    public double gety()
+    public double getY()
     {
         return _y;
     }
