@@ -1,4 +1,5 @@
 
+
 /**
  * Write a description of class Box3D here.
  *
@@ -12,7 +13,8 @@ public class Box3D
     private int _width;
     private int _height;
     private Point3D _base;
-    private final int DEFAULT_VALUE = 0;
+    public final int DEFAULT_VALUE = 0;
+    public final int DEFAULT_NEGATIVE_FIX = 1;
     
     public Box3D()
     {
@@ -21,27 +23,91 @@ public class Box3D
         _width = DEFAULT_VALUE ;
         _height = DEFAULT_VALUE ;
     }
-    
+      
     public Box3D(Point3D basePoint, int legnth, int width, int height )
     {
         _base = new Point3D(basePoint);
-        _legnth = legnth;
-        _width =  width;
-        _height = height;
+        _legnth = checkNegative(legnth);
+        _width = checkNegative(width);
+        _height = checkNegative(height);
     }
     
     public Box3D(Box3D otherBox)
     {
         // initialise instance variables
-        if (otherBox != null)
-        {
-            _base = new Point3D(otherBox._base);
-            _legnth = otherBox._legnth;
-            _width =  otherBox._width;
-            _height = otherBox._height;
-        }
+        _base = new Point3D(otherBox._base);
+        _legnth = otherBox._legnth;
+        _width =  otherBox._width;
+        _height = otherBox._height;
+        
     }
     
-
+    private int checkNegative(int num )
+    {
+        if (num < DEFAULT_VALUE)
+        {
+            return DEFAULT_NEGATIVE_FIX;
+        }
+        return num;
+    }
     
+    public int getLegnth()
+    {
+        return _legnth;
+    }
+    
+    public int getWidth()
+    {
+        return _width;
+    }
+    
+    public int getHeight()
+    {
+        return _height;
+    }
+    
+    public Point3D getBase()
+    {
+        return new Point3D(_base);
+    }
+    
+    public void setLegnth(int num)
+    {
+        if (num > 0)
+            _legnth = num;
+    }
+
+    public void setWidth(int num)
+    {
+        if (num > 0)
+            _width = num;
+    }
+
+    public void setHeight(int num)
+    {
+        if (num > 0)
+            _height = num;
+    }
+    
+    public void setBase (Point3D p)
+    {
+        _base = new Point3D(p);
+    }
+    
+    public String toString()
+    {
+        return "The base point is ("+ _base + "),length=" + _legnth +",width=" + _width +
+        ",height=" + _height;
+    }
+    
+    public boolean equals(Box3D other)
+    {
+        if (_base.equals(other._base)  && other._height == _height && other._legnth == _legnth && 
+        other._width == _width)
+        {
+            return true;
+        }
+        return false;
+    }   
+
 }
