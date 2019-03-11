@@ -1,5 +1,4 @@
-    
-        
+         
 /**
  * Write a description of class Collection here.
  *
@@ -55,6 +54,10 @@ public class Collection
         return false; 
     }
     
+    /**
+     * Finds and returns the box with the highest base point
+     * @return The box with the highest base point
+     */
     public Box3D mostUpperBaseCorner()
     {
         int max = 0;
@@ -73,6 +76,10 @@ public class Collection
         return _boxes[max];
     }
     
+    /**
+     * Calculates the sum of the 3D boxes in the collection
+     * @return The total surface area of the collection's boxes
+     */
     public double totalSurfaceArea()
     {
         double surfaceSum =0;
@@ -83,6 +90,11 @@ public class Collection
         return surfaceSum;
     }
     
+    /**
+     * Calculates the longest distance between the farthest boxes in the 
+     * collection
+     * @return The longest distance between the base point of farthest boxes
+     */
     public double longestDistance()
     {
         double maxDistance = 0;
@@ -180,3 +192,4 @@ public class Collection
         return allBoxes;
     }
 }
+
