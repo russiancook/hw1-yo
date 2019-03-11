@@ -1,4 +1,5 @@
     
+        
 /**
  * Write a description of class Collection here.
  *
@@ -89,11 +90,93 @@ public class Collection
         {
             for (int j=i+1; j < _boxes.length -1 && _boxes[j] != null; j++)
             {
-                double currentDistance = _boxes[i].distance(_boxes[j]);
-                if (currentDistance > maxDistance)
-                    maxDistance = currentDistance;
+            double currentDistance = _boxes[i].distance(_boxes[j]);
+            if (currentDistance > maxDistance)
+                maxDistance = currentDistance;
             }
         }
         return maxDistance;
+    }
+    
+    // Checks if number is in array
+    private boolean checkIndex(int number)
+    {
+        if (number >= MAX_NUM_BOXES || number < 0)
+            return false;
+        return true;
+    }
+    
+    /**
+     * Returns the volume of the smallest 3D box that can contain
+     * any box between the indexes
+     * @param i an index in the array
+     * @param j another index in the array
+     * @return the volume of the smallest 3D box that can contain
+     * any box between the indexes
+     */
+    public int volumeOfSmallestBox(int i, int j)
+    {
+        int bigger;
+        if (!checkIndex(i) || !checkIndex(i))
+            return 0;
+        // The array is in size order therefore the further down one is the biggest
+        else
+        {
+            if (i > j)
+                bigger = i;
+            else 
+                bigger = j;
+            Box3D bigBox = new Box3D(_boxes[bigger]);
+            // in order to make the box bigger than the largest well add 1 to length
+            bigBox.setLength(bigBox.getLength() + 1);
+            int biggestSize = bigBox.getVolume();
+            return biggestSize;
+        }
+    }
+    
+    /**
+     * Returns the number of 3D boxes in the collection
+     * @return the amount of 3D Boxes in the collection
+     */
+    public int getNumOfBoxes()
+    {
+        int counter = 0;
+        while (counter < _boxes.length -1 && _boxes[counter] != null)
+        {
+            counter++;
+        }
+        //adding 1 cause we started from 0
+        return counter + 1;
+    }
+    
+    /**
+     * Returns a collection containing only the full part of given one
+     * @return An array containing a the full 3D boxes
+     */
+    public Box3D[] getBoxes()
+    {
+        Box3D [] newBoxes;
+        int totalBoxes = getNumOfBoxes();
+        newBoxes = new Box3D[totalBoxes];
+        for (int i = 0; i < totalBoxes - 1; i++)
+        {
+            newBoxes[i] = new Box3D(_boxes[i]);
+        }
+        return newBoxes;
+    }
+    
+    /**
+     * Returns the 3D boxes in Box3D format
+     * @return A string listing the 3D boxes in the collection 
+     */
+    public String toString()
+    {
+        String allBoxes = "";
+        int totalBoxes = getNumOfBoxes();
+        for (int i = 0; i < totalBoxes - 1; i++)
+        {
+            allBoxes = allBoxes + "\n" + _boxes[i].toString();
+        }
+        return allBoxes;
     }
 }
