@@ -139,8 +139,10 @@ public class Collection
             else 
                 bigger = j;
             Box3D bigBox = new Box3D(_boxes[bigger]);
-            // in order to make the box bigger than the largest well add 1 to length
+            // in order to make the box bigger than the largest well add 1 to all parameters 
             bigBox.setLength(bigBox.getLength() + 1);
+            bigBox.setWidth(bigBox.getWidth() + 1);
+            bigBox.setHeight(bigBox.getHeight() + 1);
             int biggestSize = bigBox.getVolume();
             return biggestSize;
         }
