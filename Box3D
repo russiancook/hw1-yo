@@ -119,7 +119,8 @@ public class Box3D
     public Point3D getUpRightBackPoint()
     {
         Point3D newPoint = new Point3D(_base);
-        newPoint.move((double)_legnth, (double)_width, (double)_height);
+        //moving by width and height and backward in the length 
+        newPoint.move(-(double)_legnth, (double)_width, (double)_height);
         return newPoint;
     }
     
