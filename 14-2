@@ -6,19 +6,12 @@ public static int what (int []a)
       if (f(a, i, a.length -1 -i)%2 == 1)
       {
           temp = a.length;
-          break;
       }
 
-      else if (f(a, i, a.length -1 -(i+1))%2 == 1)
+      else if (f(a, i, a.length -1 -(i+1))%2 == 1 || f(a, i + 1, a.length -1 -i)%2 == 1)
       {
           temp = a.length -(i + 1);
-          break;
-      }
-      else if (f(a, i + 1, a.length -1 -i)%2 == 1)
-      {
-          temp = a.length -(i + 1);
-          break;
       }
   }
-  return big;
+  return temp;
 }
