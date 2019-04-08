@@ -7,7 +7,7 @@
 public class Ex14
 {
     //14-1
-    
+    // Helper function to get heighest point
     private static int getHeighest(int [] heights)
     {
         int tmp = 0;
@@ -21,6 +21,7 @@ public class Ex14
         return tmp;    
     }
     
+    // The function sum the amount of water stored up to the highest point
     private static int beforeHigh(int [] heights, int highIndex)
     {
         int totalSum = 0;
@@ -40,6 +41,7 @@ public class Ex14
         return sum;
     }
     
+    // The function sum the amount of water stored after the highest point
     private static int afterHigh(int [] heights, int highIndex)
     {
         int totalSum = 0;
@@ -57,6 +59,8 @@ public class Ex14
         }
         return sum;
     }
+    
+    // Deals with the case that both edges are the high points
     private static int bothHigh(int [] heights)
     {
         int sum = 0;
@@ -66,6 +70,13 @@ public class Ex14
         }
         return sum;
     }
+    
+    /**
+     * Returns the amount of water that the given water pot can hold
+     * The efficiency is O(n) and the space is O(n)
+     * @param heights the array representing the shape of the water pot
+     * @return sum the total amount of water it can hold
+     */
     public static int waterVolume (int [] heights)
     {
         int sum = 0;
@@ -82,7 +93,14 @@ public class Ex14
     }
     
     //14-2
-    
+    /**
+     * Returns the amount of water that the given water pot can hold
+     * The efficiency is O(n) and the space is O(n)
+     * @param a the array of given numbers
+     * @param low the number to start summing from
+     * @param high the number to end summing at
+     * @return res the sum of the array between the 2 numbers
+     */
     public static int f (int[]a, int low, int high)
     {
         int res = 0;
@@ -93,6 +111,13 @@ public class Ex14
         return res;
     }
     
+    /**
+     * Returns the length of the longest chunk of numbers who's sum is odd
+     * The efficiency was O(n^2). After the fix it became O(n)
+     * @param a the array of given numbers
+     * @return temp the length of the longest chunk of numbers who's sum 
+     * is odd
+     */
     public static int what (int []a)
     {
       int temp = 0;
@@ -115,14 +140,15 @@ public class Ex14
     
     final static int MAX = 10;
     final static int MIN = 1;
+    // Helper function for printing
     private static void printSolution(int x1, int x2, int x3)
     {
         System.out.println(x1 + " + " + x2 + " + " + x3);
     }
     
+    // The function that counts the solutions by testing the possible ones
     private static int getSolutions(int num, int x1, int x2, int counter)
-    {
-        
+    {        
         if(x1 > 10 || num - (x1 + x2) < 0)
             return counter;
         else if(x2 > 10 || num - (x1 + x2) == 0)
@@ -136,7 +162,14 @@ public class Ex14
             return getSolutions(num, x1, x2+1, counter+1);
         }
     }
-    
+    /**
+     * Returns the possible options that an equation with 3 parameters 
+     * between 1 - 10 that equal the given number.
+     * Works by calling getSolutions which calls itself while iterating 
+     * through the possible solutions
+     * @param num the number that is the result of the equation
+     * @return counter the amount of possible solutions
+     */
     public static int solutions(int num)
     {
         int counter = getSolutions(num, MIN, MIN, 0);
