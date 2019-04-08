@@ -1,0 +1,28 @@
+final static int MAX = 10;
+final static int MIN = 1;
+private static void printSolution(int x1, int x2, int x3)
+{
+    System.out.println(x1 + " + " + x2 + " + " + x3);
+}
+
+private static int getSolutions(int num, int x1, int x2, int counter)
+{
+    if(x1 > 10 || num - (x1 + x2) < 0)
+        return counter;
+    else if(x2 > 10 || num - (x1 + x2) == 0)
+        return getSolutions(num, x1+1, 1, counter);
+    else if(num - (x1 + x2) > 10)
+        return getSolutions(num, x1, x2+1, counter);
+    else
+    {
+        int x3 = num - (x1 + x2);
+        printSolution(x1, x2, x3);
+        return getSolutions(num, x1, x2+1, counter+1);
+    }
+}
+
+public static int solutions(int num)
+{
+    int counter = getSolutions(num, MIN, MIN, 0);
+    return counter;
+}
