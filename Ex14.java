@@ -81,12 +81,16 @@ public class Ex14
     {
         int sum = 0;
         int highest = getHeighest(heights);
+        // First is highest
         if (highest == 0)
             sum = afterHigh(heights, highest);
+        // last is highest
         else if (highest == heights.length -1)
             sum = beforeHigh(heights, highest);
+        // Both edges are the highest
         else if (highest == -1)
             sum = bothHigh(heights);
+        // Highest is in the middle
         else    
             sum = beforeHigh(heights, highest) + afterHigh(heights, highest);
         return sum;
