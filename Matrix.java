@@ -139,14 +139,8 @@ public class Matrix
     
     public Matrix rotateCounterClockwise()
     {
-        Matrix newMatrix = new Matrix(_matrix[0].length,_matrix.length);
-        for (int i = 0; i < _matrix.length; i++)
-        { 
-            for (int j = 0; j < _matrix[0].length; j++)
-            {
-                newMatrix._matrix[_matrix[0].length -1 -j][i] = _matrix[i][j];
-            }
-        }
+        Matrix newMatrix = new Matrix(_matrix);
+        newMatrix = newMatrix.rotateClockwise().rotateClockwise().rotateClockwise();
         return newMatrix;
     }
 }
