@@ -180,3 +180,79 @@ public class Ex14
         return counter;
     }    
 }
+
+
+//14-4
+    
+    private static String printPath(int path[][])
+    {
+       String theMatrix= "";
+       
+       for (int i = 0; i < path.length; i++)
+       {
+           for (int j = 0; j < path[0].length; j++)
+           {
+               // Avoid adding a \t at the end of each line
+               if (j != path[0].length -1)
+                    theMatrix = theMatrix + path[i][j] + "\t";
+               else
+                    theMatrix = theMatrix + path[i][j];
+           }
+           theMatrix = theMatrix + "\n";
+       }
+       return theMatrix;
+    }
+    
+    private static boolean checkMove(int path[][], int i, int j)
+    {
+        if(i >= path.length || j >= path.length || i < 0 || j < 0 || path[i][j] == 1)
+            return false;
+        return true;
+    }
+    
+    public static boolean findSum (int mat[][], int sum, int path[][])
+    {
+        int i,j =0;
+        if (findSum(mat, sum, path, 0, 0, 0))
+            return true;
+        return false;
+    }
+    
+    private static boolean findSum (int mat[][], int sum, int path[][], int i, 
+    int j, int currentSum)
+    {
+        currentSum += mat[i][j];
+        if (sum < currentSum)
+            return false;
+        
+        else if (sum == currentSum)
+        {
+            path[i][j] = 1;
+            System.out.println(printPath(path));
+            return true;
+        }
+        
+        else
+        {
+            path[i][j] = 1;
+            if(checkMove(path, i+1, j) && 
+            findSum(mat, sum, path, i+1, j, currentSum))
+            {
+                return true;
+            }
+            else if(checkMove(path, i, j+1) && 
+            findSum(mat, sum, path, i, j+1, currentSum))
+            {
+                return true;
+            }
+            else if(checkMove(path, i-1, j) && 
+            findSum(mat, sum, path, i-1, j, currentSum))
+            {
+                return true;
+            }
+            return checkMove(path, i, j-1) && 
+            findSum(mat, sum, path, i, j-1, currentSum);
+            
+        }
+    }
+}
