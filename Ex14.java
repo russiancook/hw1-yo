@@ -223,7 +223,10 @@ public class Ex14
     {
         currentSum += mat[i][j];
         if (sum < currentSum)
+        {    
+            path[i][j] = 0;
             return false;
+        }
         
         else if (sum == currentSum)
         {
@@ -250,8 +253,16 @@ public class Ex14
             {
                 return true;
             }
-            return checkMove(path, i, j-1) && 
-            findSum(mat, sum, path, i, j-1, currentSum);
+            else if(checkMove(path, i, j-1) && 
+            findSum(mat, sum, path, i, j-1, currentSum))
+            {
+                return true;
+            }
+            else
+            {
+                path[i][j] =0;
+                return false;
+            }
             
         }
     }
