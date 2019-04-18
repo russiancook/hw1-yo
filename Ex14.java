@@ -183,24 +183,22 @@ public class Ex14
 
 
 //14-4
-    
-    private static String printPath(int path[][])
+    // return a string containing the path using recursion
+    private static String printMatrix(int path[][] , int i, int j, String theMatrix)
     {
-       String theMatrix= "";
-       
-       for (int i = 0; i < path.length; i++)
-       {
-           for (int j = 0; j < path[0].length; j++)
-           {
-               // Avoid adding a \t at the end of each line
-               if (j != path[0].length -1)
-                    theMatrix = theMatrix + path[i][j] + "\t";
-               else
-                    theMatrix = theMatrix + path[i][j];
-           }
-           theMatrix = theMatrix + "\n";
-       }
-       return theMatrix;
+        theMatrix = theMatrix + path[i][j] + "\t";
+        if (j == path.length -1)
+        {
+            if (i == path.length - 1)
+                return theMatrix;
+            else
+            {
+                theMatrix = theMatrix + "\n";
+                return printMatrix(path, i+1, 0, theMatrix);
+            }
+        }
+        else
+            return printMatrix(path, i, j+1, theMatrix);
     }
     
     private static boolean checkMove(int path[][], int i, int j)
