@@ -229,7 +229,7 @@ public class Ex14
         else if (sum == currentSum)
         {
             path[i][j] = 1;
-            System.out.println(printPath(path));
+            System.out.println(printMatrix(path, 0, 0, ""));
             return true;
         }
         
