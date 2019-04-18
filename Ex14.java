@@ -183,29 +183,47 @@ public class Ex14
 
 
 //14-4
-    // return a string containing the path using recursion
-    private static String printMatrix(int path[][] , int i, int j, String theMatrix)
+    
+    // Recursively Print the path that equals the sum
+    private static String printPath(int path[][] , int i, int j, String thePath)
     {
-        theMatrix = theMatrix + path[i][j] + "\t";
+        thePath = thePath + path[i][j] + "\t";
         if (j == path.length -1)
         {
             if (i == path.length - 1)
-                return theMatrix;
+                return thePath;
             else
             {
-                theMatrix = theMatrix + "\n";
-                return printMatrix(path, i+1, 0, theMatrix);
+                thePath = thePath + "\n";
+                return printPath(path, i+1, 0, thePath);
             }
         }
         else
-            return printMatrix(path, i, j+1, theMatrix);
+            return printPath(path, i, j+1, thePath);
     }
-    
+    // Check if the place in the path is one we can continue on
     private static boolean checkMove(int path[][], int i, int j)
     {
         if(i >= path.length || j >= path.length || i < 0 || j < 0 || path[i][j] == 1)
             return false;
         return true;
+    }
+    
+    // Check if the path is empty
+    private static boolean checkEmpty(int path[][], int i, int j)
+    {
+        if (path[i][j] ==1)
+            return false;
+        
+        else if (j == path.length -1)
+        {
+            if (i == path.length - 1 )
+                return true;
+            else
+                return checkEmpty(path, i+1, 0);
+        }
+        else
+            return checkEmpty(path, i, j+1);            
     }
     
     public static boolean findSum (int mat[][], int sum, int path[][])
@@ -216,24 +234,19 @@ public class Ex14
         return false;
     }
     
+    // Recursively move through the path to find the sum
     private static boolean findSum (int mat[][], int sum, int path[][], int i, 
     int j, int currentSum)
     {
         currentSum += mat[i][j];
-        if (sum < currentSum)
-        {    
-            path[i][j] = 0;
-            return false;
-        }
-        
-        else if (sum == currentSum)
+        if (sum == currentSum)
         {
             path[i][j] = 1;
-            System.out.println(printMatrix(path, 0, 0, ""));
+            System.out.println(printPath(path, 0, 0, ""));
             return true;
         }
         
-        else
+        else 
         {
             path[i][j] = 1;
             if(checkMove(path, i+1, j) && 
@@ -258,10 +271,22 @@ public class Ex14
             }
             else
             {
-                path[i][j] =0;
-                return false;
-            }
-            
+                path[i][j] = 0;
+                if(checkEmpty(path, 0, 0))
+                {
+                    if (j == path.length -1)
+                    {
+                        if (i == path.length - 1 )
+                            return false;
+                        else
+                            return findSum(mat, sum, path, i+1, 0, 0);
+                    }
+                    else
+                        return findSum(mat, sum, path, i, j+1, 0);
+                }
+                else
+                    return false;
+            } 
         }
     }
 }
