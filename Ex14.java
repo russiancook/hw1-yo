@@ -179,10 +179,10 @@ public class Ex14
         int counter = getSolutions(num, MIN, MIN, 0);
         return counter;
     }    
-}
 
 
-//14-4
+
+    //14-4
     
     // Recursively Print the path that equals the sum
     private static String printPath(int path[][] , int i, int j, String thePath)
