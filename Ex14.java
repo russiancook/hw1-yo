@@ -209,23 +209,6 @@ public class Ex14
         return true;
     }
     
-    // Check if the path is empty
-    private static boolean checkEmpty(int path[][], int i, int j)
-    {
-        if (path[i][j] ==1)
-            return false;
-        
-        else if (j == path.length -1)
-        {
-            if (i == path.length - 1 )
-                return true;
-            else
-                return checkEmpty(path, i+1, 0);
-        }
-        else
-            return checkEmpty(path, i, j+1);            
-    }
-    
     public static boolean findSum (int mat[][], int sum, int path[][])
     {
         int i,j =0;
@@ -272,7 +255,7 @@ public class Ex14
             else
             {
                 path[i][j] = 0;
-                if(checkEmpty(path, 0, 0))
+                if(currentSum - mat[i][j] == 0)
                 {
                     if (j == path.length -1)
                     {
