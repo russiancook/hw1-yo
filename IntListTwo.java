@@ -47,4 +47,28 @@ public class IntListTwo
         }
         
     }
+    
+    //Not clear what they want
+    public void readToList()
+    {
+        int num = scan.nextInt();
+        while(num != -9999)
+        {
+            addNumber(num);
+            num = scan.nextInt();
+        }
+    }
+    
+    public String toString()
+    {
+        String list = "{";
+        IntNodeTwo temp = _head;
+        while(temp.getNext() != null)
+        {
+            list = list + temp.getNum() + ",";
+            temp = temp.getNext();
+        }
+        list = list + temp.getNum() + "}";
+        return list;
+    }
 }
