@@ -32,4 +32,19 @@ public class IntListTwo
         newNum.getPrev().setNext(newNum);
         newNum.getNext().setPrev(newNum);
     }
+    
+    public void removeNumber(int num)
+    {
+        IntNodeTwo temp = _head;
+        while(temp.getNum() < num )
+        {
+            temp = temp.getNext();
+        }
+        if (temp.getNum() == num)
+        {
+            temp.getPrev().setNext(temp.getNext());
+            temp.getNext().setPrev(temp.getPrev());
+        }
+        
+    }
 }
