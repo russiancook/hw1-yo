@@ -189,7 +189,7 @@ public class Collection
         int totalBoxes = getNumOfBoxes();
         for (int i = 0; i < totalBoxes - 1; i++)
         {
-            allBoxes = allBoxes + "\n" + _boxes[i].toString();
+            allBoxes = allBoxes + "\n Box no." + i + ": " + _boxes[i].toString();
         }
         return allBoxes;
     }
