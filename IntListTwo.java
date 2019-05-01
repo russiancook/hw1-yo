@@ -1,12 +1,16 @@
-
 /**
  * Write a description of class IntListTwo here.
  *
  * @author (your name)
  * @version (a version number or a date)
  */
+
+import java.util.Scanner;
+
 public class IntListTwo
 {
+    Scanner scan = new Scanner(System.in);
+    
     private IntNodeTwo _head, _tail;
     
     public IntListTwo()
@@ -63,12 +67,60 @@ public class IntListTwo
     {
         String list = "{";
         IntNodeTwo temp = _head;
-        while(temp.getNext() != null)
+        while(temp.getNext() != _tail)
         {
             list = list + temp.getNum() + ",";
             temp = temp.getNext();
         }
-        list = list + temp.getNum() + "}";
+        list = list + _tail.getNum() + "}";
         return list;
     }
+    
+    public int length()
+    {
+        int counter = 0;
+        IntNodeTwo temp = _head;
+        while(temp != null)
+        {
+            counter++;
+            temp = temp.getNext();
+        }
+        return counter;
+    }
+    
+    public int sum()
+    {
+        int sum = 0;
+        IntNodeTwo temp = _head;
+        while(temp.getNext() != null)
+        {
+            sum += temp.getNum();
+            temp = temp.getNext();
+        }
+        return sum;
+    }
+    
+    private boolean checkFront(int num)
+    {
+        for int 
+    }
+    
+    private boolean checkBack(int num)
+    {
+        
+    }
+    
+    public int maxLength()
+    {
+        if(this.sum() % 2 == 0 )
+            return this.length();
+        
+        for(int i = 0; i < this.length(); i++)
+        {
+            if (checkFront(i) || checkBack(i))
+                return this.length() - i;
+        }
+        return 0;
+    }
+    
 }
