@@ -176,8 +176,13 @@ public class Ex14
      */
     public static int solutions(int num)
     {
-        int counter = getSolutions(num, MIN, MIN, 0);
-        return counter;
+        if (num > 30 || num < 3)
+            return 0;
+        else
+        {
+            int counter = getSolutions(num, MIN, MIN, 0);
+            return counter;
+        }
     }    
 }
 
