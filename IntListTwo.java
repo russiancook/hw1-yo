@@ -159,13 +159,16 @@ public class IntListTwo
         for (int i=0; i < this.length(); i++)
         {
             int sum = 0;
-            IntListTwo tempList = new IntListTwo(temp, this._tail);
+            //IntListTwo tempList = new IntListTwo(temp, this._tail);
+            IntNodeTwo temp2 = temp;
             for (int j = i; j < this.length(); j++)
             {
-                sum += temp.getNum();
-                if ((double)(sum / (j+1)) == num)
+                sum += temp2.getNum();
+                if ((double)sum / (j+1-i) == num)
                     return true;
+                temp2 = temp2.getNext();
             }
+            temp = temp.getNext();
         }
         return false;
     }
