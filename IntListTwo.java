@@ -131,8 +131,15 @@ public class IntListTwo
         {
             if(temp.getNum() % 2 != 0)
             {
-                IntListTwo tempList = new IntListTwo(temp.getNext(), this._tail);
-                if (tempList.sum() % 2 == 0)
+                int sum = 0;
+                if (temp == _tail)
+                    sum = temp.getNum();
+                else
+                {
+                    IntListTwo tempList = new IntListTwo(temp.getNext(), this._tail);
+                    sum = tempList.sum();
+                }                   
+                if (sum % 2 == 0)
                 {
                     if (this.length() - i > longest)
                         longest = this.length() - i;
