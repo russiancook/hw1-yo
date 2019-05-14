@@ -13,18 +13,29 @@ public class IntListTwo
     
     private IntNodeTwo _head, _tail;
     
+    /**
+     * Constructor for objects of class IntListTwo
+     */
     public IntListTwo()
     {
         _head = null;
         _tail = null;
     }
-    
+    /**
+     * Constructor for objects of class IntListTwo
+     * @param h an IntNodeTwo object representing the head
+     * @param t an IntNodeTwo object representing the tail
+     */
     public IntListTwo(IntNodeTwo h, IntNodeTwo t)
     {
         _head = h;
         _tail = t;
     }
     
+    /**
+     * Adds a node to the linked list in the appropriate place
+     * @param num the number to create a node from and add to the list 
+     */
     public void addNumber(int num)
     {
         
@@ -55,6 +66,10 @@ public class IntListTwo
         
     }
     
+    /**
+     * Removes a node from the linked list if the number exists
+     * @param num the number to delete from the list 
+     */
     public void removeNumber(int num)
     {
         IntNodeTwo temp = _head;
@@ -81,6 +96,10 @@ public class IntListTwo
         }
     }
     
+    /**
+     * Returns the list in order(head to tail)
+     * @return a string containing the list
+     */
     public String toString()
     {
         String list = "{";
@@ -94,6 +113,10 @@ public class IntListTwo
         return list;
     }
     
+    /**
+     * Returns the length of the list
+     * @return a number containing the length of the list
+     */
     public int length()
     {
         int counter = 0;
@@ -106,6 +129,10 @@ public class IntListTwo
         return counter;
     }
     
+    /**
+     * Returns the sum of the list
+     * @return a number containing the sum of the list
+     */
     public int sum()
     {
         int sum = 0;
@@ -118,7 +145,10 @@ public class IntListTwo
         return sum + _tail.getNum();
     }
     
-    
+    /**
+     * Returns the length of the longest sub list whos sum is even
+     * @return a number containing the length of the longest sub list whos sum is even
+     */
     public int maxLength()
     {
         IntNodeTwo temp = _head;
@@ -153,6 +183,11 @@ public class IntListTwo
         return longest;
     }
     
+    /**
+     * Returns if there is a sub list whos average is the given number
+     * @param num a number to check if there is an average of a sub array equal to it
+     * @return true if there is a sub array whos average is num
+     */
     public boolean isAverage(double num)
     {
         IntNodeTwo temp = _head;
