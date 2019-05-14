@@ -214,6 +214,13 @@ public class Ex14
         return true;
     }
     
+    /**
+     * Returns true if there is a path in the mat that equals the given sum 
+     * @param mat an array containing the numbers to go through
+     * @param sum the sum that the path needs to equal
+     * @param path an array containing 1's where the path to the sum goes through
+     * @return true if there is a possible path to the sum
+     */
     public static boolean findSum (int mat[][], int sum, int path[][])
     {
         int i,j =0;
