@@ -73,7 +73,7 @@ public class Ex14
     
     /**
      * Returns the amount of water that the given water pot can hold
-     * The efficiency is O(n) and the space is O(n)
+     * The efficiency is O(n) and the space is O(1)
      * @param heights the array representing the shape of the water pot
      * @return sum the total amount of water it can hold
      */
@@ -97,47 +97,38 @@ public class Ex14
     }
     
     //14-2
-    /**
-     * Returns the amount of water that the given water pot can hold
-     * The efficiency is O(n) and the space is O(n)
-     * @param a the array of given numbers
-     * @param low the number to start summing from
-     * @param high the number to end summing at
-     * @return res the sum of the array between the 2 numbers
-     */
-    public static int f (int[]a, int low, int high)
-    {
-        int res = 0;
-        for(int i=low; i <=high; i++)
-        {
-            res += a[i];
-        }
-        return res;
-    }
     
     /**
-     * Returns the length of the longest chunk of numbers who's sum is odd
-     * The efficiency was O(n^2). After the fix it became O(n)
+     * Returns the length of the longest chunk of numbers who's sum is even
+     * The efficiency was O(n^3). After the fix it became O(n) 
+     * The space effeciency is now o(1)
      * @param a the array of given numbers
      * @return temp the length of the longest chunk of numbers who's sum 
      * is odd
      */
     public static int what (int []a)
     {
-      int temp = 0;
-      for (int i=0; i <= a.length; i++)
-      {
-          if (f(a, i, a.length -1 -i)%2 == 1)
-          {
-              temp = a.length;
-          }
-    
-          else if (f(a, i, a.length -1 -(i+1))%2 == 1 || f(a, i + 1, a.length -1 -i)%2 == 1)
-          {
-              temp = a.length -(i + 1);
-          }
-      }
-      return temp;
+        int sum = 0; 
+        int len = 0;
+        
+        for (int i = 0; i < a.length; i++) 
+        { 
+          sum += a[i]; 
+        } 
+        
+        if (sum % 2 == 0)  
+            return a.length;
+            
+        for (int i = 0; i < a.length; i++)  
+        { 
+            if (a[i] % 2 == 1) 
+            { 
+                len = Math.max(len, Math.max(a.length - i - 1, i)); 
+            } 
+        } 
+  
+        return len;
+     
     }
     
     //14-3
@@ -184,28 +175,11 @@ public class Ex14
             return counter;
         }
     }    
-}
 
 
-//14-4
+
+    //14-4
     
-    // Recursively Print the path that equals the sum
-    private static String printPath(int path[][] , int i, int j, String thePath)
-    {
-        thePath = thePath + path[i][j] + "\t";
-        if (j == path.length -1)
-        {
-            if (i == path.length - 1)
-                return thePath;
-            else
-            {
-                thePath = thePath + "\n";
-                return printPath(path, i+1, 0, thePath);
-            }
-        }
-        else
-            return printPath(path, i, j+1, thePath);
-    }
     // Check if the place in the path is one we can continue on
     private static boolean checkMove(int path[][], int i, int j)
     {
@@ -225,7 +199,9 @@ public class Ex14
     {
         int i,j =0;
         if (findSum(mat, sum, path, 0, 0, 0))
+        {
             return true;
+        }
         return false;
     }
     
@@ -237,7 +213,6 @@ public class Ex14
         if (sum == currentSum)
         {
             path[i][j] = 1;
-            System.out.println(printPath(path, 0, 0, ""));
             return true;
         }
         
@@ -267,6 +242,7 @@ public class Ex14
             else
             {
                 path[i][j] = 0;
+                
                 if(currentSum - mat[i][j] == 0)
                 {
                     if (j == path.length -1)
