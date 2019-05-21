@@ -4,6 +4,9 @@
  * @author (your name)
  * @version (a version number or a date)
  */
+
+import java.lang.Math;
+
 public class Ex14
 {
     //14-1
@@ -125,7 +128,7 @@ public class Ex14
             
         for (int i = 0; i < a.length; i++)  
         { 
-            if (a[i] % 2 == 1) 
+            if (Math.abs(a[i] % 2) == 1 ) 
             { 
                 len = Math.max(len, Math.max(a.length - i - 1, i)); 
             } 
