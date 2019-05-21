@@ -1,8 +1,8 @@
 /**
  * Write a description of class IntListTwo here.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author 
+ * @version 21/5/19
  */
 
 import java.util.Scanner;
@@ -34,6 +34,7 @@ public class IntListTwo
     
     /**
      * Adds a node to the linked list in the appropriate place
+     * The efficiancy is o(n) and the space is o(1)
      * @param num the number to create a node from and add to the list 
      */
     public void addNumber(int num)
@@ -68,6 +69,7 @@ public class IntListTwo
     
     /**
      * Removes a node from the linked list if the number exists
+     * The efficiancy is o(n) and the space is o(1)
      * @param num the number to delete from the list 
      */
     public void removeNumber(int num)
@@ -85,7 +87,10 @@ public class IntListTwo
         
     }
     
-    //Not clear what they want
+    /**
+     * Adds numbers to the list until it receives -9999
+     * The efficiancy is o(1) and the space is o(1)
+     */
     public void readToList()
     {
         int num = scan.nextInt();
@@ -98,6 +103,7 @@ public class IntListTwo
     
     /**
      * Returns the list in order(head to tail)
+     * The efficiancy is o(n) and the space is o(1)
      * @return a string containing the list
      */
     public String toString()
@@ -115,6 +121,7 @@ public class IntListTwo
     
     /**
      * Returns the length of the list
+     * The efficiancy is o(n) and the space is o(1)
      * @return a number containing the length of the list
      */
     public int length()
@@ -131,6 +138,7 @@ public class IntListTwo
     
     /**
      * Returns the sum of the list
+     * The efficiancy is o(n) and the space is o(1)
      * @return a number containing the sum of the list
      */
     public int sum()
@@ -147,6 +155,7 @@ public class IntListTwo
     
     /**
      * Returns the length of the longest sub list whos sum is even
+     * The efficiancy is o(n) and the space is o(n)
      * @return a number containing the length of the longest sub list whos sum is even
      */
     public int maxLength()
@@ -185,6 +194,7 @@ public class IntListTwo
     
     /**
      * Returns if there is a sub list whos average is the given number
+     * The effeciancy is o(n^2)and the space is o(1)
      * @param num a number to check if there is an average of a sub array equal to it
      * @return true if there is a sub array whos average is num
      */
@@ -194,7 +204,6 @@ public class IntListTwo
         for (int i=0; i < this.length(); i++)
         {
             int sum = 0;
-            //IntListTwo tempList = new IntListTwo(temp, this._tail);
             IntNodeTwo temp2 = temp;
             for (int j = i; j < this.length(); j++)
             {
