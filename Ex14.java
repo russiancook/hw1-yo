@@ -35,6 +35,8 @@ public class Ex14
                 sum += heights[currentHigh] - heights[index];
                 index++;
             }
+            if (heights[index] == heights[highIndex])
+                index++;
             currentHigh = index;
         }
         
@@ -55,6 +57,8 @@ public class Ex14
                 sum += heights[currentHigh] - heights[index];
                 index--;
             }
+            if (heights[index] == heights[highIndex])
+                index--;
             currentHigh = index;
         }
         return sum;
